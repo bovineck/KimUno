@@ -15,9 +15,9 @@
 // ------ (uncomment out one) -------
 //-----------------------------------
 
-//#define _TARGET ARDUINO_MINI
+#define _TARGET ARDUINO_MINI
 //#define _TARGET BLUEPILL_STM
-#define _TARGET ESP32_R
+//#define _TARGET ESP32_R
 //#define _TARGET PERSONAL_COMPUTER
 
 
@@ -25,20 +25,21 @@
 //----- Programs to include in ROM, set any combination to TRUE
 //----- (as long as target has space: Pro Mini can't have all)
 //-------------------------------------------------------------
-#define _INCL_DISASM      TRUE
+#define _INCL_DISASM      FALSE
 #define _INCL_MINIASM     TRUE
-#define _INCL_MCHESS      TRUE
-#define _INCL_CALCULATOR  TRUE
-#define _INCL_VTL02       TRUE
+#define _INCL_MCHESS      FALSE
+#define _INCL_CALCULATOR  FALSE
+#define _INCL_VTL02       FALSE
+#define _INCL_MOON        TRUE
 #define _INCL_A1BASIC     TRUE
 #define _INCL_ACI         TRUE
-#define _INCL_LIFE        TRUE
+#define _INCL_LIFE        FALSE
 
 
 //--------------------------------------------------------------
 //----- Programs to preload in RAM, choose only ONE of these
 //--------------------------------------------------------------
-#define _DEMO_FIRST       TRUE
+#define _DEMO_FIRST       FALSE
 #define _DEMO_TIMER       FALSE
 #define _DEMO_HILO        FALSE
 #define _INCL_FARMERBROWN FALSE

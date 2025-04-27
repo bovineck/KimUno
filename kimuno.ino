@@ -75,15 +75,12 @@ byte kCols[8] = { PA8, PA9, PA10,   PA15, PB3, PB4, PB5, PB6 }; // note col PB6 
 byte aRows[3] = { PB7, PB8, PB9 };
 byte ledSelect[8] =  { PA0, PA1, PA2, PA3,   PA4, PA5, PA7, PA6 }; // note that last pin  not used at present. Can delete .
 byte ledSelect7[8] = { PA0, PA1, PA2, PA3,   PA6, PA4, PA5, PA7 }; // note that last pin  not used at present. Can delete .
-
-
 #elif _TARGET == ESP32_R
-byte aCols[8] = {1,1,1,1,1,1,1,1}; // note col PB6 is the extra one linked to DP
-byte kCols[8] = {3,3,3,3,3,3,3,3}; // note col PB6 is the extra one linked to DP
-byte aRows[3] = {4,4,4}; // maybe change this as well?
-byte ledSelect[8] =  {5,5,5,5,5,5,5,5}; // note that last pin  not used at present. Can delete .
-byte ledSelect7[8] = {6,6,6,6,6,6,6,6}; // note that last pin  not used at present. Can delete .
- 
+byte aCols[8] = { 12,13,14,15, 16,17,18,19 }; // note col PB6 is the extra one linked to DP
+byte kCols[8] = { 13,14,15, 16,17,18,19, 12 }; // note col PB6 is the extra one linked to DP
+byte aRows[3] = { 21,22,23 };
+byte ledSelect[8] =  { 25,26,27,32, 33,4,5,33 }; // note that last pin  not used at present. Can delete .
+byte ledSelect7[8] = { 25,26,27,32, 33,4,5,33 }; // note that last pin  not used at present. Can delete .
 #elif _TARGET == ARDUINO_MINI
 // for Pro Mini, probably also for Arduino Uno though (that's just untested in recent years)
 byte aCols[8] = { A5, 2,3,4,5,6,7,8 }; // note col A5 is the extra one linked to DP
@@ -356,7 +353,7 @@ void driveLEDs()
          digitalWrite(aCols[col], bitOn);       // set the bit
       }
       digitalWrite(ledSelect[ledNo], HIGH); // Light this LED 
-      delay(2);
+      delay(1);
       digitalWrite(ledSelect[ledNo], LOW); // unLight this LED
     }
 }

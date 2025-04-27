@@ -258,7 +258,7 @@ uint8_t read6502(uint16_t address)
   // does not achieve enough 'frames per second' in the display updates. 0x2F instead of 0x7F seems to compensate appropriately.
   //
   #if _TARGET == ARDUINO_MINI
-  if (address==0x1F5A) return(0x1f); // shorten wait between LED updates as atmega328 is slower! 0x7F originally.  	
+  if (address==0x1F5A) return(0x06); // shorten wait between LED updates as atmega328 is slower! 0x7F originally.  	
   #elif _TARGET == ESP32_R
   if (address==0x1F5A) return(0xff); // lengthen wait between LED updates as esp32 is faster! 0x7F originally.    
   #endif
@@ -430,17 +430,13 @@ uint8_t read6502(uint16_t address)
         }
 #endif
 
-#if _INCL_MCHESS	
+#if _INCL_MOON	
 	// ===================================================
 	// Microchess, with the board print routine at the end
 	// ===================================================
-	if (address >= 0xC000 && address <0xC571)
+	if (address >= 0x3000 && address <0xC571)
 	{ 
-    	if (address == 0xC202) 	// intercept $C202: Blitz mode should return 0 instead of 8
-			if (blitzMode==1)	// This is the Blitz mode hack from the microchess manual.
-			 	return((uint8_t) 0x00);
-
-    return(readRom(mchessROM,address - 0xC000));
+    return(readRom(moonhex,address - 0x3000));  
 	}
 #endif
 
